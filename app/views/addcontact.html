@@ -1,0 +1,17 @@
+<form role="form">
+	<div class="form-group">
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre" class="form-control" ng-model="contact.nombre">
+	</div>
+	<div class="form-group">
+		<label for="apellidos">Nombre:</label>
+		<input type="text" id="apellidos" name="apellidos" class="form-control" ng-model="contact.apellido">
+	</div>
+	<div class="form-group">
+		<label for="telefono">Telefono:</label>
+		<input type="text" id="telefono" name="telefono" class="form-control" ng-model="contact.telefono">
+	</div>
+
+	<button ng-click="addCtrl.addContact()" >Agregar</button>
+
+</form>
