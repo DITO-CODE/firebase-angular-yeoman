@@ -8,29 +8,32 @@
  * Controller of the firebaseAngularApp
  */
 angular.module('firebaseAngularApp')
-  .controller('AddcontactCtrl', function ($scope,$firebaseObject) {
+  .controller('AddcontactCtrl',["$scope","$firebaseArray", function ($scope,$firebaseArray) {
   		
-  		$scope.contact = {
-  			nombre:"",
-  			apellido:"",
-  			telefono:""
-  		}
+  
+  		 var ref=firebase.database().ref("/contacts");
+  		 $scope.contacts =$firebaseArray(ref);
 
-  		var ref = firebase.database().ref();
-
+  		 //Cargamos la lista de nuestros contactos
+  		 $scope.contacts.$loaded(function(x){
+  		 	x === $scope.contacts;
+  		 	$scope.list = x;
+  		 }).catch(function(error){
+  		 	console.log("Error " + error);
+  		 });
 
   		this.addContact = function(){
-  			let obj = $firebaseObject(ref);
-  			obj.contacto =$scope.contact;
 
-  			console.log(obj);
-
-  			obj.$save().then(function(ref){
-  				ref.key === obj.$id;
-  				alert("Guardo " + obj.$id);
-  			},function(error){
-  				alert("Error " + error);
-  			});
-  			//Lo agregamos a la base de datos de firebase
+  			  $scope.contacts.$add($scope.contact).then(function(ref){
+  			 	//Si guardo vamos a reiniciar nuestro scope de contacto
+  			 	$scope.contact = {};
+  			 },function(error){
+  			 	alert("no se guardo");
+  			 });
+  			
   		}
-  });
+
+
+  		
+  	
+  }]);
