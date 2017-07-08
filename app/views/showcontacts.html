@@ -1,0 +1,23 @@
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Telefono</th>
+				<th>Correo</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="contacto in list">
+				<th>{{contacto.nombre}} {{contacto.apellido}}</th>
+				<th>{{contacto.telefono}}</th>
+				<th>{{contacto.correo}}</th>
+				<th><button class="btn btn-secondary" ng-click="showContactCtrl.editar(contacto.$id)">Editar</button></th>
+				<th><button class="btn btn-secondary" ng-click="showContactCtrl.eliminar(contacto.$id)">Eliminar</button></th>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

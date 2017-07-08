@@ -8,19 +8,23 @@
  * Controller of the firebaseAngularApp
  */
 angular.module('firebaseAngularApp')
-  .controller('AddcontactCtrl',["$scope","$firebaseArray","reffirebase", function ($scope,$firebaseArray,reffirebase) {
+  .controller('AddcontactCtrl',["$scope","$firebaseArray","reffirebase","$stateParams", function ($scope,$firebaseArray,reffirebase,$stateParams) {
   		
-  
-  		 
-  		 $scope.contacts = reffirebase.getRefContacts();
+      $scope.contacts = reffirebase.getRefContacts();
 
-  		 //Cargamos la lista de nuestros contactos
-  		 $scope.contacts.$loaded(function(x){
-  		 	x === $scope.contacts;
-  		 	$scope.list = x;
-  		 }).catch(function(error){
-  		 	console.log("Error " + error);
-  		 });
+      $scope.contactId = $stateParams.idContact;
+      $scope.valueButton = "Agregar";
+
+      console.log($scope.contactId);
+
+      if($scope.contactId !== null){
+
+        $scope.valueButton = "Editar";
+        $scope.contact = $scope.contacts.$getRecord($scope.contactId);
+        console.log($scope.contacts.$getRecord($scope.contactId));
+      }
+  		 
+  		
 
   		this.addContact = function(){
 

@@ -22,9 +22,17 @@ angular
       };
       firebase.initializeApp(config);
   		
-  		$stateProvider.state('contacts',{
-  			url:'/contactos',
+  		$stateProvider.state('agregar',{
+  			url:'/agregar',
   			templateUrl: 'views/addcontact.html',
-  			controller:'AddcontactCtrl as addCtrl'
-  		});
+  			controller:'AddcontactCtrl as addCtrl',
+        params:{
+          idContact : null
+        }
+  		})
+      .state('mostrar',{
+        url:'/contactos',
+        templateUrl:'views/showcontacts.html',
+        controller:'ContactosCtrl as showContactCtrl'
+      });
   });
