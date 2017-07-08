@@ -8,11 +8,11 @@
  * Controller of the firebaseAngularApp
  */
 angular.module('firebaseAngularApp')
-  .controller('AddcontactCtrl',["$scope","$firebaseArray", function ($scope,$firebaseArray) {
+  .controller('AddcontactCtrl',["$scope","$firebaseArray","reffirebase", function ($scope,$firebaseArray,reffirebase) {
   		
   
-  		 var ref=firebase.database().ref("/contacts");
-  		 $scope.contacts =$firebaseArray(ref);
+  		 
+  		 $scope.contacts = reffirebase.getRefContacts();
 
   		 //Cargamos la lista de nuestros contactos
   		 $scope.contacts.$loaded(function(x){
