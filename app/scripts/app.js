@@ -44,7 +44,7 @@ angular
   .run(function($rootScope,$location,$state,authService){
     
       $rootScope.$on('$locationChangeStart', function() {
-        console.log($location.path());
+       // console.log($location.path());
         //Aquí validamos que el usuario se encuentre 
           $rootScope.usuario =  authService.getAuth();
           var publicPages = ['/login'];
@@ -58,9 +58,12 @@ angular
       $rootScope.logout = authService.getAuthObj();
 
       $rootScope.log = function(){
-        authService.logout();
-        console.log("cerro sesion");
-        $state.go('login');
+        authService.logout().then(function(user){
+          $rootScope.usuario=null;
+          //console.log("cerro sesion");
+          $state.go('login');
+        });
+       
       }
    
   });

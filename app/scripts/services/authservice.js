@@ -31,7 +31,7 @@ angular.module('firebaseAngularApp')
     }
 
     this.logout = function(){
-    	authObj.$signOut();
+    	return authObj.$signOut();
     }
 
   }]);
