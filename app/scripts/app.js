@@ -34,5 +34,33 @@ angular
         url:'/contactos',
         templateUrl:'views/showcontacts.html',
         controller:'ContactosCtrl as showContactCtrl'
+      })
+      .state('login',{
+        url:'/login',
+        templateUrl:'views/login.html',
+        controller: 'LoginCtrl as loginCtrl'
       });
+  })
+  .run(function($rootScope,$location,$state,authService){
+    
+      $rootScope.$on('$locationChangeStart', function() {
+        console.log($location.path());
+        //Aquí validamos que el usuario se encuentre 
+          $rootScope.usuario =  authService.getAuth();
+          var publicPages = ['/login'];
+          var restrictedPage = publicPages.indexOf($location.path()) === -1;
+          console.log(restrictedPage);
+          if (restrictedPage && ! $rootScope.usuario) {
+              $state.go('login');
+          }
+      });
+
+      $rootScope.logout = authService.getAuthObj();
+
+      $rootScope.log = function(){
+        authService.logout();
+        console.log("cerro sesion");
+        $state.go('login');
+      }
+   
   });

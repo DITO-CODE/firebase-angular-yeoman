@@ -1,19 +1,19 @@
 <form role="form" ng-submit="addCtrl.addContact()">
 	<div class="form-group">
 		<label for="nombre">Nombre:</label>
-		<input type="text" id="nombre" name="nombre" class="form-control" ng-model="contact.nombre">
+		<input type="text" id="nombre" name="nombre" class="form-control" ng-model="contact.nombre" required>
 	</div>
 	<div class="form-group">
 		<label for="apellidos">Apellidos:</label>
-		<input type="text" id="apellidos" name="apellidos" class="form-control" ng-model="contact.apellido">
+		<input type="text" id="apellidos" name="apellidos" class="form-control" ng-model="contact.apellido" required>
 	</div>
 	<div class="form-group">
 		<label for="telefono">Telefono:</label>
-		<input type="text" id="telefono" name="telefono" class="form-control" ng-model="contact.telefono">
+		<input type="text" id="telefono" name="telefono" class="form-control" ng-model="contact.telefono" required>
 	</div>
 	<div class="form-group">
 		<label for="correo">Correo:</label>
-		<input type="text" id="correo" name="correo" class="form-control" ng-model="contact.correo">
+		<input type="email" id="correo" name="correo" class="form-control" ng-model="contact.correo" required>
 	</div>
 
 	<input type="submit" class="btn btn-secondary" value="{{valueButton}}">

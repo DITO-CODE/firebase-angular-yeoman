@@ -39,8 +39,10 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li><a ui-sref="mostrar">Contactos</a></li>
-               <li><a ui-sref="agregar">Agregar</a></li>
+              <li ng-if="usuario"><a ui-sref="mostrar">Contactos</a></li>
+              <li ng-if="usuario"><a ui-sref="agregar">Agregar</a></li>
+              <li ng-if="!usuario"><a ui-sref="login">Login</a></li>
+              <li ng-if="usuario"><a ng-click="log()">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -100,6 +102,8 @@
         <script src="scripts/controllers/addcontact.js"></script>
         <script src="scripts/services/reffirebase.js"></script>
         <script src="scripts/controllers/contactos.js"></script>
+        <script src="scripts/services/authservice.js"></script>
+        <script src="scripts/controllers/login.js"></script>
         <!-- endbuild -->
 </body>
 </html>
