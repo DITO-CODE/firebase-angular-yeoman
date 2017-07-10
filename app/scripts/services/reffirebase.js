@@ -8,10 +8,13 @@
  * Service in the firebaseAngularApp.
  */
 angular.module('firebaseAngularApp')
-  .service('reffirebase',["$firebaseArray", function ($firebaseArray) {
+  .service('reffirebase',["$firebaseArray","authService", function ($firebaseArray,authService) {
     // AngularJS will instantiate a singleton by calling "new" on this function
+    var usuario = authService.getAuth();
+    var correo = usuario.email.replace("@","_").replace(".","_");
+
     this.getRefContacts = function(){
-    	let ref =  firebase.database().ref("/contacts");
+    	let ref =  firebase.database().ref("/contacts/"+correo);
     	return $firebaseArray(ref);
     };
 

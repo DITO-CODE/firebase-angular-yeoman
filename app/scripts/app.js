@@ -46,11 +46,13 @@ angular
       });
   })
   .run(function($rootScope,$location,$state,authService){
-    
+      $rootScope.usuario =  authService.getAuth();
+      
       $rootScope.$on('$locationChangeStart', function() {
        // console.log($location.path());
         //Aquí validamos que el usuario se encuentre 
           $rootScope.usuario =  authService.getAuth();
+          //console.log($rootScope.usuario);
           var publicPages = ['/login','/signin'];
           var restrictedPage = publicPages.indexOf($location.path()) === -1;
          // console.log(restrictedPage);
