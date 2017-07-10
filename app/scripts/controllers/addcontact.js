@@ -32,6 +32,9 @@ angular.module('firebaseAngularApp')
         if($scope.contactId !== null){
           $scope.contacts.$save($scope.contact).then(function(ref){
             alert("Se actualizo el contacto " + $scope.contact.nombre + " " + $scope.contact.apellido);
+            $scope.contact = {};
+            $scope.valueButton="Agregar";
+            $scope.contactId = null;
           });
         }else{
     			$scope.contacts.$add($scope.contact).then(function(ref){

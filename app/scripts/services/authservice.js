@@ -34,4 +34,25 @@ angular.module('firebaseAngularApp')
     	return authObj.$signOut();
     }
 
+    this.createUser = function(user){
+      authObj.$createUserWithEmailAndPassword(user.correo, user.password)
+      .then(function(firebaseUser) {
+        $state.go('login');
+        console.log('Usuario creado');
+      }).catch(function(error) {
+        
+        if(error.code ==='auth/email-already-in-use'){
+            alert("El correo " + user.correo + " ya se encuentra registrado.");
+        }else if(error.code === 'auth/invalid-email'){
+            alert("Ingrese un correo válido.");
+        }else{
+            alert("Ocurrio un error al intentar crear tu usuario " + user.correo );
+            console.log(error + " : CODE : " + error.code);
+        }
+
+      });  
+    }
+
+
+
   }]);

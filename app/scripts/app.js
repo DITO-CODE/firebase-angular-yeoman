@@ -39,6 +39,10 @@ angular
         url:'/login',
         templateUrl:'views/login.html',
         controller: 'LoginCtrl as loginCtrl'
+      }).state('signin',{
+        url:'/signin',
+        templateUrl:'views/sigin.html',
+        controller:'CreateuserCtrl as signinCtrl'
       });
   })
   .run(function($rootScope,$location,$state,authService){
@@ -47,9 +51,9 @@ angular
        // console.log($location.path());
         //Aquí validamos que el usuario se encuentre 
           $rootScope.usuario =  authService.getAuth();
-          var publicPages = ['/login'];
+          var publicPages = ['/login','/signin'];
           var restrictedPage = publicPages.indexOf($location.path()) === -1;
-          console.log(restrictedPage);
+         // console.log(restrictedPage);
           if (restrictedPage && ! $rootScope.usuario) {
               $state.go('login');
           }
