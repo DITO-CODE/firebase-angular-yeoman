@@ -14,9 +14,12 @@ angular.module('firebaseAngularApp')
     var correo = usuario.email.replace("@","_").replace(".","_");
 
     this.getRefContacts = function(){
-    	let ref =  firebase.database().ref("/contacts/"+correo);
+    	var ref =  firebase.database().ref("/contacts/"+correo);
     	return $firebaseArray(ref);
     };
 
+    this.getOnlyRef = function(){
+    	return firebase.database().ref("/contacts/"+correo);
+    }
 
   }]);

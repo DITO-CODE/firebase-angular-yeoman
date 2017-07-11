@@ -21,7 +21,7 @@ angular.module('firebaseAngularApp')
   		 });
 
   		 this.eliminar = function(index){
-  		 	let contacto = $scope.contacts.$getRecord(index);
+  		 	var contacto = $scope.contacts.$getRecord(index);
 
   		 	if(confirm("Desea eliminar a "+contacto.nombre + " " + contacto.apellido)){
   		 		$scope.contacts.$remove(contacto);
