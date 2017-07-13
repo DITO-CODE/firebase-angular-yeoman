@@ -56,12 +56,15 @@ angular
        // console.log($location.path());
         //Aquí validamos que el usuario se encuentre 
           var usuario = JSON.parse(localStorage.getItem('usuario'));
+         
           //console.log($rootScope.usuario);
           var publicPages = ['/login','/signin'];
           var restrictedPage = publicPages.indexOf($location.path()) === -1;
          // console.log(restrictedPage);
           if (restrictedPage && usuario==null) {
               $state.go('login');
+          }else{
+             $rootScope.usuario = usuario;
           }
       });
 
