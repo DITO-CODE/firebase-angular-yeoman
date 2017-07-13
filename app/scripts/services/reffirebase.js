@@ -18,5 +18,8 @@ angular.module('firebaseAngularApp')
     	return $firebaseArray(ref);
     };
 
+    this.getOnlyRef = function(){
+    	return firebase.database().ref("/contacts/"+correo);
+    }
 
   }]);
