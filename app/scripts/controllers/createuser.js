@@ -12,6 +12,6 @@ angular.module('firebaseAngularApp')
     
   		this.createUser = function(){
   			authService.createUser($scope.user);
-  		}
+  		};
 
   }]);

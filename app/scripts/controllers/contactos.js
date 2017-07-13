@@ -26,9 +26,9 @@ angular.module('firebaseAngularApp')
   		 	if(confirm("Desea eliminar a "+contacto.nombre + " " + contacto.apellido)){
   		 		$scope.contacts.$remove(contacto);
   		 	}
-  		 }
+  		 };
 
   		 this.editar = function(index){
   		 	$state.go('agregar', {idContact: index});
-  		 }
+  		 };
   }]);

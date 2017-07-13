@@ -14,6 +14,7 @@ angular.module('firebaseAngularApp')
 
     this.login = function(correo,clave){
     	authObj.$signInWithEmailAndPassword(correo, clave).then(function(firebaseUser) {
+          localStorage.setItem('usuario',JSON.stringify(firebaseUser));
 		  $state.go('mostrar');
 		}).catch(function(error) {
 		  console.error("Authentication failed:", error);
@@ -28,11 +29,11 @@ angular.module('firebaseAngularApp')
 
     this.getAuthObj = function(){
     	return authObj;
-    }
+    };
 
     this.logout = function(){
     	return authObj.$signOut();
-    }
+    };
 
     this.createUser = function(user){
       authObj.$createUserWithEmailAndPassword(user.correo, user.password)
@@ -51,7 +52,7 @@ angular.module('firebaseAngularApp')
         }
 
       });  
-    }
+    };
 
 
 

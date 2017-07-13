@@ -46,30 +46,34 @@ angular
       });
   })
   .run(function($rootScope,$location,$state,authService){
-      $rootScope.usuario =  authService.getAuth();
+      $rootScope.usuario =  JSON.parse(localStorage.getItem('usuario'));
       
+      $rootScope.$on(function(event) {
+        console.log(event);
+      });
+
       $rootScope.$on('$locationChangeStart', function() {
        // console.log($location.path());
         //Aquí validamos que el usuario se encuentre 
-          $rootScope.usuario =  authService.getAuth();
+          var usuario = JSON.parse(localStorage.getItem('usuario'));
           //console.log($rootScope.usuario);
           var publicPages = ['/login','/signin'];
           var restrictedPage = publicPages.indexOf($location.path()) === -1;
          // console.log(restrictedPage);
-          if (restrictedPage && ! $rootScope.usuario) {
+          if (restrictedPage && usuario==null) {
               $state.go('login');
           }
       });
 
-      $rootScope.logout = authService.getAuthObj();
-
       $rootScope.log = function(){
-        authService.logout().then(function(user){
+        authService.logout().then(function(){
           $rootScope.usuario=null;
+
+          localStorage.removeItem('usuario');
           //console.log("cerro sesion");
           $state.go('login');
         });
        
-      }
+      };
    
   });

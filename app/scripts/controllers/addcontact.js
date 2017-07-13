@@ -16,8 +16,7 @@ angular.module('firebaseAngularApp')
       $scope.valueButton = "Agregar";
       
       $scope.contacts.$loaded(function(x){
-        x === $scope.contacts;
-          
+      
           if($scope.contactId !== null){
             $scope.contact = x.$getRecord($scope.contactId);
             $scope.contactCambio = $scope.contact;
@@ -70,7 +69,7 @@ angular.module('firebaseAngularApp')
 
         }
   			
-  		}
+  		};
 
     
       var verificaCorreoTelefono = function(){
@@ -96,7 +95,7 @@ angular.module('firebaseAngularApp')
 
         return promise;
 
-      }
+      };
 
   		
   	

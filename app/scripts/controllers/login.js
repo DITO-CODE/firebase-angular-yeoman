@@ -13,5 +13,5 @@ angular.module('firebaseAngularApp')
     	this.login = function(){
     		//console.log($scope.user);
     		authService.login($scope.user.correo,$scope.user.pass);
-    	}
+    	};
   }]);

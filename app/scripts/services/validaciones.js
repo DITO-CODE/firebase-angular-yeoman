@@ -8,7 +8,7 @@
  * Service in the firebaseAngularApp.
  */
 angular.module('firebaseAngularApp')
-  .service('validaciones',["reffirebase","$firebaseArray", function (reffirebase,$firebaseArray) {
+  .service('validaciones',["reffirebase", function (reffirebase) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var ref = reffirebase.getOnlyRef();
      
@@ -24,7 +24,7 @@ angular.module('firebaseAngularApp')
    		 });
 
     	return promise;
-    }  
+    }; 
    
     this.validaTelefono = function(telefono){
     	var promise = new Promise(function(resolve,reject){
@@ -38,7 +38,7 @@ angular.module('firebaseAngularApp')
    		 });
 
     	return promise;
-    }  
+    };  
 
 
 
