@@ -3,11 +3,21 @@
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.16.0.
 
-## Build & development
+#Entra a la carpeta donde descargaste o clonaste
 
-Run `grunt` for building and `grunt serve` for preview.
+#Corre este comando para instalar yoman bower grunt
+<pre>$ npm install -g grunt-cli bower yo generator-karma generator-angular</pre>
 
-## Testing
+# Para instalar dependencias
+<pre>$ npm install </pre>
 
-Running `grunt test` will run the unit tests with karma.
-"# AngularFirebase with yeoman" 
+#Para instalar dependencias de bower
+<pre>$ bower install</pre>
+
+#Modificar ../app/app.js
+Cambia la configuracion de firebase con tu configuración...
+
+
+
+
+
